@@ -25,9 +25,11 @@ PowerShell-скрипт для поиска жёстких ссылок NTFS (`H
 
 ## От имени кого и как запускать
 
-Каталог `C:\Program Files\WindowsApps` недоступен на чтение даже обычному администратору (`Access is denied`), поэтому скрипт нужно запускать **от имени `TrustedInstaller`** (с включёнными привилегиями, например `Enable All Privileges` в NSudo).
+Каталог `C:\Program Files\WindowsApps` недоступен на чтение даже обычному администратору (`Access is denied`), поэтому скрипт нужно запускать **от имени `TrustedInstaller`** (с включёнными привилегиями, например `Enable All Privileges`).
 
-> **Важно:** если вы используете NSudo, запускайте `powershell` или `cmd` **напрямую из NSudo**, а не через `explorer.exe` и пункт контекстного меню «Открыть в Терминале» — иначе Windows откроет терминал в обычной пользовательской сессии без прав `TrustedInstaller`.
+> **Важно про Windows 11:** на Windows 11 утилита **NSudo** может не работать из-за защиты `RunAsPPL` (LSA/TrustedInstaller protection). В этом случае используйте, например, **[NanaRun](https://github.com/M2Team/NanaRun)** или `gsudo --ti`.
+>
+> Также при запуске через NSudo / NanaRun запускайте `powershell` или `cmd` **напрямую**, а не через `explorer.exe` и пункт контекстного меню «Открыть в Терминале» — иначе Windows откроет терминал в обычной пользовательской сессии без прав `TrustedInstaller`.
 
 Перед запуском можно убедиться, что токен корректный:
 
